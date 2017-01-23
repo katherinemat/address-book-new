@@ -25,16 +25,23 @@ $(document).ready(function() {
 
   var newContact = new Contact(inputtedFirstName, inputtedLastName);
 
-  $("#contacts").append("<li><span class='contact'>" + newContact.firstName + "</span></li>");
+  $("#contacts").append("<li><span class='contact'>" + newContact.firstName + " " + newContact.lastName +"</span></li>");
+
+  $(".contact").last().click(function() {
+    $("#show-contact").show();
+    $("#show-contact h2").text(newContact.firstName);
+    $(".first-Name").text(newContact.firstName);
+    $(".last-Name").text(newContact.lastName);
+  });
 
   $(".new-address").each(function() {
     var inputtedStreetName = $(this).find("input.new-street").val();
     var inputtedCityName = $(this).find("input.new-city").val();
     var inputtedStateName = $(this).find("input.new-state").val();
     var newAddress = new Address(inputtedStreetName, inputtedCityName, inputtedStateName);
-    newContact.addresses.push(newAddress)
+    newContact.address.push(newAddress);
   });
   $("input#new-first-name").val("");
-  $("input#new-last-name").val("");  
+  $("input#new-last-name").val("");
   });
 });
