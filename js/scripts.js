@@ -35,15 +35,15 @@ $(document).ready(function() {
     $(".first-name").text(newContact.firstName);
     $(".last-name").text(newContact.lastName);
     $("ul#addresses").text("");
-    newContact.Address.forEach(function(Address) {
+    newContact.address.forEach(function(Address) {
       $("ul#addresses").append("<li>" + Address.fullAddress() + "</li>");
     });
   });
 
   $(".new-address").each(function() {
-    var inputtedStreetName = $(this).find("input.new-street").val();
-    var inputtedCityName = $(this).find("input.new-city").val();
-    var inputtedStateName = $(this).find("input.new-state").val();
+    var inputtedStreetName = $(this).find("input#new-street").val();
+    var inputtedCityName = $(this).find("input#new-city").val();
+    var inputtedStateName = $(this).find("input#new-state").val();
     var newAddress = new Address(inputtedStreetName, inputtedCityName, inputtedStateName);
     newContact.address.push(newAddress);
   });
