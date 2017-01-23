@@ -1,8 +1,8 @@
 //Business Logic
 function Contact(first, last) {
-    this.firstName = first;
-    this.lastName = last;
-    this.address = [];
+  this.firstName = first;
+  this.lastName = last;
+  this.address = [];
 }
 
 function Address(street, city, state) {
@@ -25,13 +25,16 @@ $(document).ready(function() {
 
   var newContact = new Contact(inputtedFirstName, inputtedLastName);
 
+  $("#contacts").append("<li><span class='contact'>" + newContact.firstName + "</span></li>");
+
   $(".new-address").each(function() {
     var inputtedStreetName = $(this).find("input.new-street").val();
     var inputtedCityName = $(this).find("input.new-city").val();
     var inputtedStateName = $(this).find("input.new-state").val();
     var newAddress = new Address(inputtedStreetName, inputtedCityName, inputtedStateName);
     newContact.addresses.push(newAddress)
-  }); 
-
+  });
+  $("input#new-first-name").val("");
+  $("input#new-last-name").val("");  
   });
 });
