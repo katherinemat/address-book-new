@@ -22,13 +22,16 @@ $(document).ready(function() {
 
   var inputtedFirstName = $("#new-first-name").val();
   var inputtedLastName = $("#new-last-name").val();
-  var inputtedStreetName = $("#new-street").val();
-  var inputtedCityName = $("#new-city").val();
-  var inputtedStateName = $("#new-state").val();
 
   var newContact = new Contact(inputtedFirstName, inputtedLastName);
 
-  
+  $(".new-address").each(function() {
+    var inputtedStreetName = $(this).find("input.new-street").val();
+    var inputtedCityName = $(this).find("input.new-city").val();
+    var inputtedStateName = $(this).find("input.new-state").val();
+    var newAddress = new Address(inputtedStreetName, inputtedCityName, inputtedStateName);
+    newContact.addresses.push(newAddress)
+  }); 
 
   });
 });
